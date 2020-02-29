@@ -79,6 +79,10 @@ def disaplay_wfh(current_date, pre_msg, slack=False):
     s.message_channel(channel="#testchannel", text=msg+msg_datewise, link_names=True)
   return msg
 
+@app.route('/index', methods=['GET', 'POST'])
+def index():
+    return ("This is the index page.")
+
 @app.route('/', methods=['GET', 'POST'])
 def get_details():
     current_date = str(util.get_today())
