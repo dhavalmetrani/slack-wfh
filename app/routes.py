@@ -7,6 +7,7 @@ import lib.slack as slack
 
 # PRIVATE_CHANNEL="GGNP03DN3"
 PRIVATE_CHANNEL="GU0HV4N01"
+# PRIVATE_CHANNEL="GU0HV4N01"
 s = slack.Slack()
 
 def disaplay_wfh(current_date, pre_msg, slack=False):
