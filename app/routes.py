@@ -83,7 +83,8 @@ def disaplay_wfh(current_date, pre_msg, slack=False):
 def get_details():
     current_date = str(util.get_today())
     data = None
-    pre_msg = "*[ {} ]* Invoked by @{}. Invoked for user: {}.\n"
+    # pre_msg = "[ Add ] WFH invoked by {}. \nWFH reported for {}."
+    pre_msg = "*[ {} ]* WFH Invoked by @{}.\n Reported for: {}. Successful!\n"
     msg = "Error"
     user_name = "None"
     channel_id = "None"
@@ -100,7 +101,7 @@ def get_details():
         if len(data) > 0:
           command = data[0].lower()
           if command == "list":
-            pre_msg = "*[ List ]* Invoked by @{}.\n".format(user_name)
+            pre_msg = "*[ List ]* WFH Invoked by @{}.\n".format(user_name)
             # return(channel_id)
             if channel_id == PRIVATE_CHANNEL:
               if len(data) > 1:
@@ -114,7 +115,8 @@ def get_details():
             else:
               user_to_operate = data[1].lower()
               util.add_wfh(user_to_operate, str(current_date))
-              pre_msg = pre_msg.format("Added", user_name, user_to_operate)
+              cmd = "Add"
+              pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
               disaplay_wfh(current_date, pre_msg, True)
               return(pre_msg)
 
@@ -124,14 +126,16 @@ def get_details():
             else:
               user_to_operate = data[1].lower()
               util.remove_wfh(user_to_operate, str(current_date))
-              pre_msg = pre_msg.format("Removed", user_name, user_to_operate)
+              cmd = "Remove"
+              pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
               disaplay_wfh(current_date, pre_msg, True)
               return(pre_msg)
           else:
             user_to_operate = data[0].lower()
             util.add_wfh(user_to_operate, str(current_date))
             # pre_msg = "Invoked by @{}.\n".format(user_name)
-            pre_msg = pre_msg.format(user_name, "Added", user_to_operate)
+            cmd = "Add"
+            pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
             disaplay_wfh(current_date, pre_msg, True)
             return(pre_msg)
         else:
