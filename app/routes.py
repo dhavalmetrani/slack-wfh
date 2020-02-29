@@ -136,6 +136,9 @@ def get_details():
               return(pre_msg)
           else:
             user_to_operate = data[0].lower()
+            print("###################")
+            print(user_to_operate)
+            print("###################")
             if user_to_operate[0] == "@":
                 util.add_wfh(user_to_operate, str(current_date))
                 # pre_msg = "Invoked by @{}.\n".format(user_name)
