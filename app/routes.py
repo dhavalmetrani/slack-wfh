@@ -136,13 +136,16 @@ def get_details():
               return(pre_msg)
           else:
             user_to_operate = data[0].lower()
-            util.add_wfh(user_to_operate, str(current_date))
-            # pre_msg = "Invoked by @{}.\n".format(user_name)
-            cmd = "Add"
-            pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
-            disaplay_wfh(current_date, pre_msg, True)
-            return(pre_msg)
+            if user_to_operate[0] == "@":
+                util.add_wfh(user_to_operate, str(current_date))
+                # pre_msg = "Invoked by @{}.\n".format(user_name)
+                cmd = "Add"
+                pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
+                disaplay_wfh(current_date, pre_msg, True)
+                return(pre_msg)
+            else:
+                return("Invalid command: {}. Please specify proper parameters. [ wfh <user_to_add> | add | remove ]".format(command))
         else:
-          return("Invalid command: {}. Please specify proper parameters. [ wfh list | add | remove ]".format(command))
+          return("Invalid command: {}. Please specify proper parameters. [ wfh <user_to_add> | add | remove ]".format(command))
     return ""
     # return disaplay_wfh(current_date, pre_msg)
