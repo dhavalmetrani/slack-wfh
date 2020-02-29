@@ -122,22 +122,28 @@ def get_details():
               return("Please specify a user to add. e.g. wfh add @amithkumar")
             else:
               user_to_operate = data[1].lower()
-              util.add_wfh(user_to_operate, str(current_date))
-              cmd = "Add"
-              pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
-              disaplay_wfh(current_date, pre_msg, True)
-              return(pre_msg)
+              if user_to_operate[0] == "@":
+                  util.add_wfh(user_to_operate, str(current_date))
+                  cmd = "Add"
+                  pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
+                  disaplay_wfh(current_date, pre_msg, True)
+                  return(pre_msg)
+              else:
+                  return("Need proper username.")
 
           elif command == "remove":
             if len(data) <= 1:
               return("Please specify a user to remove. e.g. wfh add @amithkumar")
             else:
               user_to_operate = data[1].lower()
-              util.remove_wfh(user_to_operate, str(current_date))
-              cmd = "Remove"
-              pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
-              disaplay_wfh(current_date, pre_msg, True)
-              return(pre_msg)
+              if user_to_operate[0] == "@":
+                  util.remove_wfh(user_to_operate, str(current_date))
+                  cmd = "Remove"
+                  pre_msg = pre_msg.format(cmd, user_name, user_to_operate)
+                  disaplay_wfh(current_date, pre_msg, True)
+                  return(pre_msg)
+              else:
+                  return("Need proper username.")
           else:
             user_to_operate = data[0].lower()
             # print("###################")
