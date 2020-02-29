@@ -3,7 +3,7 @@ import os
 from slack import WebClient
 
 ENV_SLACK_TOKEN = "AMIBOT_SLACK_TOKEN"
-DEFAULT_CHANNEL = "#testchannel"
+DEFAULT_CHANNEL = "#misc-wfh"
 DEFAULT_MESSAGE = "Test message."
 DEFAULT_USER    = "amibot"
 OK              = "ok"

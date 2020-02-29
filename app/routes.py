@@ -15,7 +15,6 @@ def disaplay_wfh(current_date, pre_msg, slack=False):
   """
   Display all wfh.
   """
-
   users_wfh = []
   arr = current_date.split("-")
   dd = None
@@ -110,7 +109,9 @@ def get_details():
           if command == "list":
             pre_msg = "*[ List ]* WFH Invoked by @{}.\n".format(user_name)
             # return(channel_id)
+            # print(channel_id)
             if channel_id == PRIVATE_CHANNEL:
+              # print("#############################")
               if len(data) > 1:
                 current_date = data[1].lower()
               disaplay_wfh(current_date, pre_msg, True)
