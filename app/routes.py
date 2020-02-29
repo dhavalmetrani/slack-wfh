@@ -7,6 +7,7 @@ import lib.slack as slack
 
 # PRIVATE_CHANNEL="GGNP03DN3"
 PRIVATE_CHANNEL="GU0HV4N01"
+PRIVATE_CHANNEL_NAME="#MISC-WFH"
 # PRIVATE_CHANNEL="GU0HV4N01"
 s = slack.Slack()
 
@@ -78,7 +79,7 @@ def disaplay_wfh(current_date, pre_msg, slack=False):
   if len(msg_datewise) > 0:
     msg_datewise = "Datewise WFH: \n```" + msg_datewise + "```"
   if slack:
-    s.message_channel(channel="#testchannel", text=msg+msg_datewise, link_names=True)
+    s.message_channel(channel=PRIVATE_CHANNEL_NAME, text=msg+msg_datewise, link_names=True)
   return msg
 
 @app.route('/index', methods=['GET', 'POST'])
