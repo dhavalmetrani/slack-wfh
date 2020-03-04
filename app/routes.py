@@ -35,14 +35,20 @@ def disaplay_wfh(current_date, pre_msg, slack=False):
     date_range = [current_date]
   elif len(arr) == 2:
     for day in range(1, 32):
-      date_range.append("{}-{}-{}".format(str(yy), str(mm), str(day)))
+      _dd = str(day)
+      if len(str(day)) == 1:
+        _dd = "0" + str(day)
+      date_range.append("{}-{}-{}".format(str(yy), str(mm), str(_dd)))
   elif len(arr) == 1:
     for month in range(1, 13):
+      _mm = str(month)
+      if len(str(month)) == 1:
+        _mm = "0" + str(month)
       for day in range(1, 32):
-        _mm = str(month)
-        if len(str(month)) == 1:
-          _mm = "0" + str(month)
-        date_range.append("{}-{}-{}".format(str(yy), str(_mm), str(day)))
+        _dd = str(day)
+        if len(str(day)) == 1:
+          _dd = "0" + str(day)
+        date_range.append("{}-{}-{}".format(str(yy), str(_mm), str(_dd)))
 
   # print(date_range)
   dict_wfh = {}

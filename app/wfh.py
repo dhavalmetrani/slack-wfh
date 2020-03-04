@@ -39,14 +39,20 @@ def disaplay_wfh(current_date):
     date_range = [current_date]
   elif len(arr) == 2:
     for day in range(1, 32):
-      date_range.append("{}-{}-{}".format(str(yy), str(mm), str(day)))
+      _dd = str(day)
+      if len(str(day)) == 1:
+        _dd = "0" + str(day)
+      date_range.append("{}-{}-{}".format(str(yy), str(mm), str(_dd)))
   elif len(arr) == 1:
     for month in range(1, 13):
+      _mm = str(month)
+      if len(str(month)) == 1:
+        _mm = "0" + str(month)
       for day in range(1, 32):
-        _mm = str(month)
-        if len(str(month)) == 1:
-          _mm = "0" + str(month)
-        date_range.append("{}-{}-{}".format(str(yy), str(_mm), str(day)))
+        _dd = str(day)
+        if len(str(day)) == 1:
+          _dd = "0" + str(day)
+        date_range.append("{}-{}-{}".format(str(yy), str(_mm), str(_dd)))
 
   # print(date_range)
   dict_wfh = {}
@@ -63,13 +69,13 @@ def disaplay_wfh(current_date):
   msg = "The following members have reported wfh on `{}` so far: ".format(current_date)
   msg += "```"
   if not dict_wfh:
-    msg += None
+    msg += "None"
   else:
     for k, v in sorted(dict_wfh.items(), key=lambda x: x[1], reverse=True):
       msg += "\n- {} [ {} ]".format(k, v)
   msg += "```"
   print(msg)
-  s.message_channel(channel="#testchannel", text=msg, link_names=True)
+  # s.message_channel(channel="#misc-wfh", text=msg, link_names=True)
 
 def main():
   """
